@@ -1,4 +1,5 @@
 /*
+/*
 SAYAÇ Talimatları
 
 Aşağıdaki kısa videoyu izleyin, UI ve Chrome Devtools'a dikkat edin:
@@ -20,7 +21,6 @@ ADIM 0:
 ADIM 1:
   State hookunu kullanara, bir 'sayici', 'setSayici' çifti oluşturun.
   'sayici' state'inin ilk değeri 0 olarak yüklenmelidir.
-  
 
 ADIM 2:
   'stil' nesnesinde 'color' niteliği sabit olarak "royalblue" olarak belirlenmiştir.
@@ -46,17 +46,19 @@ ADIM 6:
 	Bu click handler 'sayici' yı sıfırlamak için 'setSayici' yi kullanacak.
 */
 
-
 import React, { useState } from 'react'; /* ADIM 0 buraya*/
 
 export default function Sayac() {
   /* ADIM 1 buraya*/
   const [sayici,setSayici]=useState(0);
-  
+	
+	
   const artirici = () => {
-     setSayici(sayici+1);
+    /* ADIM 4 buraya */
+    setSayici(sayici+1);
   };
   const azaltici = () => {
+    /* ADIM 5 */
     setSayici(sayici-1);
   };
   const reset = () => {
@@ -66,14 +68,14 @@ export default function Sayac() {
   const stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color:sayici%2===0?"royalblue":"crimson", /* ADIM 2 */
+    color:sayici%2?"crimson":'royalblue', /* ADIM 2 */
   };
 
   return (
     <div className='widget-counter container'>
       <h2>Sayaç</h2>
       <div id='sayici' style={stil}>
-        Sayı {sayici} {sayici%2===0?"çift":"tek" };
+        Sayı {sayici} {sayici%2?"tek":"çift" };
       </div>
       <div>
         <button id='artirici' onClick={artirici}>Artırıcı</button>
